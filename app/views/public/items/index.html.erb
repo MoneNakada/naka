@@ -1,8 +1,8 @@
-<section class="wrapper flex">
+<section class="container">
 	<div class="content">
 		<h2 class="section-ttl">商品一覧</h2>
 
-		<div class="items">
+		<div class="row justify-content-around">
 			<% @items.each do |item| %>
 				<%= link_to item_path(item) do %>
 					<% if item.image.attached? %>
@@ -10,8 +10,8 @@
           <% else %>
             <%= image_tag 'no_image', size: "300x300" %>
           <% end %>
-					<p><%= item.name %></p>
-					<p><%= item.with_tax_price %>円</p>
+					<p class="text-dark"><%= item.name %></p>
+					<p class="text-dark">¥<%= item.with_tax_price %></p>
 				<% end %>
 			<% end %>
 		</div>

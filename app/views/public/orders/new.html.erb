@@ -1,11 +1,11 @@
-<section class="inner">
-	<h2 class="section-ttl">注文情報入力</h2>
-	
+<section class="container">
+	<h2 class="section-ttl bg-light">注文情報入力</h2>
+
 	<%= form_with model: @order, url: orders_confirm_path do |f| %>
 		<div class="field mb2">
-			<h3>支払い方法</h3>
+			<h3>支払方法</h3>
 		  	<%= f.radio_button :payment_method, "credit_card" %>
-		  	<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+		  	<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
 		  	<%= f.radio_button :payment_method, "transfer" %>
 		  	<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 	  	</div>
@@ -16,24 +16,34 @@
 			<p><%= current_customer.full_name %></p>
 		</div>
 		<div class="field mb2 select_address_1">
-			<label class="fz16"><%= f.radio_button :select_address, 1 %>登録済住所から選択</label>
-			<%= f.select "address_id", options_from_collection_for_select(current_customer.addresses, :id, :finally_address), prompt: "住所を選択してください" %>
+			<label class="fz16"><%= f.radio_button :select_address, 1 %>登録済住所から選択</label><br>
+			<%= f.select "address_id", options_from_collection_for_select(current_customer.addresses, :id, :finally_address) %>
 		</div>
 		<div class="field mb2 select_address_2">
 			<label class="fz16"><%= f.radio_button :select_address, 2 %>新しいお届け先</label>
-			<div class="field">
-				<%= f.label :postal_code, "郵便番号(ハイフンなし7桁)" %>
-				<%= f.text_field :postal_code, placeholder: "郵便番号", class: "jpostal_code" %>
-			</div>
-			<div class="field">
-				<%= f.label :destination, "住所(郵便番号から自動入力)" %>
-				<%= f.text_field :destination, placeholder: "住所", class: "jpostal_address" %>
-			</div>
-			<div class="field">
-				<%= f.label :name, "宛名" %>
-				<%= f.text_field :name, placeholder: "宛名" %>
-			</div>
+			<table class="customer_info customer_form">
+	      <thead>
+	        <th></th>
+	        <th></th>
+	      </thead>
+	      <tbody>
+	        <tr>
+	          <td><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></td>
+	          <td><%= f.text_field :postal_code, placeholder: "0000000", class: "jpostal_code" %></td>
+	        </tr>
+	        <tr>
+	          <td><%= f.label :destination, "住所" %></td>
+	          <td><%= f.text_field :destination, placeholder: "東京都渋谷区代々木神園町0-0", class: "jpostal_address" %></td>
+	        </tr>
+	        <tr>
+	          <td><%= f.label :name, "宛名" %></td>
+	          <td><%= f.text_field :name, placeholder: "令和道子" %></td>
+	        </tr>
+	      </tbody>
+	    </table>
+	  </div>
+	  <div class="text-center">
+			<%= f.submit "確認画面へ進む", class: "btn btn-primary submit_to_confirm_order" %>
 		</div>
-		<%= f.submit "注文確認画面に進む", class: "btn btn-primary submit_to_confirm_order" %>
 	<% end %>
 </section>

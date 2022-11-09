@@ -1,15 +1,15 @@
-<section class="wrapper flex">
+<section class="container">
 	<div class="content">
 		<div class="mv">
-			<p>
+			<p class="border text-center">
 				ようこそ、NaganoCakeへ!<br>
 				このサイトは、ケーキ販売のECサイトになります。<br>
 				会員でない方も商品の閲覧はできますが、<br>
 				購入には会員登録が必要になります。
 			</p>
 		</div>
-		<h2 class="section-ttl">オススメ商品</h2>
-		<div class="items">
+		<h2 class="section-ttl">新着商品</h2>
+		<div class="row justify-content-around">
 			<% @items.each do |item| %>
 				<%= link_to item_path(item) do %>
 					<% if item.image.attached? %>
@@ -17,9 +17,8 @@
           <% else %>
             <%= image_tag 'no_image', size: "300x300" %>
           <% end %>
-					<h5><%= item.genre.name %></h5>
-					<p><%= item.name %></p>
-					<p><%= item.with_tax_price %>円</p>
+					<p class="text-dark"><%= item.name %></p>
+					<p class="text-dark">¥<%= item.with_tax_price %></p>
 				<% end %>
 			<% end %>
 		</div>

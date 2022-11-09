@@ -1,8 +1,8 @@
-<section class="wrapper flex">
+<section class="container">
 	
 	<div class="content">
 
-		<div class="flex">
+		<div class="row justify-content-around">
 			<% if @item.image.attached? %>
         <%= image_tag @item.image, size: "300x300" %>
       <% else %>
@@ -16,10 +16,9 @@
 				</p><br>
 					
 				<%= form_with model: @cart_item, url: cart_items_path do |f| %>
-					<p>数量を選択して下さい。</p>
 					<%= f.select :amount, *[1..10] %>
 					<%= f.hidden_field :item_id, :value => @item.id %>
-					<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+					<%= f.submit "カートに入れる", class: "btn btn-success" %>
 				<% end %>
 					
 			</div>
