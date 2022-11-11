@@ -1,7 +1,6 @@
-<section class="inner">
-	<h2 class="section-ttl">注文履歴詳細</h2>
-	<table class="order_info mb3 has_border">
-		<caption class="fz18 text-left">注文情報</caption>
+<section class="container">
+	<h2 class="bg-light m-3">注文履歴詳細</h2>
+	<table>
 		<thead>
 			<tr>
 				<th></th>
@@ -10,23 +9,23 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>注文日時</td>
-				<td><%= @order.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+				<td>購入者</td>
+				<td class="border-bottom"><%= @customer.full_name %></td>
 			</tr>
 			<tr>
-				<td>購入者</td>
-				<td><%= link_to @customer.full_name, class: "underline" %></td>
+				<td>注文日</td>
+				<td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
 			</tr>
 			<tr>
 				<td>配送先</td>
 				<td>
-					〒<%= @order.postal_code %><br>
+					〒<%= @order.postal_code %>
 					<%= @order.destination %><br>
 					<%= @order.name %>
 				</td>
 			</tr>
 			<tr>
-				<td>支払い方法</td>
+				<td>支払方法</td>
 				<td><%= @order.payment_method_i18n %></td>
 			</tr>
 			<tr>
@@ -34,22 +33,21 @@
 				<td>
 					<%= form_with model: @order, url: admin_order_path(@order) do |f| %>
 						<%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-						<%= f.submit "更新", class: "btn btn-primary" %>
+						<%= f.submit "更新", class: "btn btn-success" %>
 					<% end %>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex">
-		<table class="admin_order_details mr2 has_border">
-			<caption class="fz18 text-left">注文内容</caption>
+	<div class="row justify-content-around">
+		<table>
 			<thead>
-				<tr>
+				<tr class="bg-light">
 					<th>商品名</th>
 					<th>単価(税込)</th>
 					<th>数量</th>
 					<th>小計</th>
-					<th></th>
+					<th>制作ステータス</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -57,14 +55,14 @@
 				<% @order_details.each do |order_detail| %>
 					<% item = order_detail.item %>
 					<tr>
-						<td><%= link_to item.name, admin_item_path(item) %></td>
-						<td class="text-center"><%= order_detail.price %>円</td>
+						<td><%= link_to item.name, admin_item_path(item), class: "text-dark" %></td>
+						<td class="text-center"><%= order_detail.price %></td>
 						<td class="text-center"><%= order_detail.amount %></td>
-						<td class="text-center"><%= order_detail.subtotal %>円</td>
+						<td class="text-center"><%= order_detail.subtotal %></td>
 						<td>
 							<%= form_with model: order_detail, url: admin_order_order_detail_path(order_id: @order.id, id: order_detail.id) do |f| %>
 								<%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
-								<%= f.submit "更新", class: "btn btn-primary" %>
+								<%= f.submit "更新", class: "btn btn-success" %>
 							<% end %>
 						</td>
 					</tr>
@@ -73,8 +71,7 @@
 			</tbody>
 		</table>
 
-		<table class="confirm_prices has_border">
-			<caption class="fz18 text-left">請求情報</caption>
+		<table>
 			<thead>
 				<tr>
 					<th></th>
@@ -83,16 +80,16 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>送料</td>
-					<td><%= @order.shipping_cost %>円</td>
-				</tr>
-				<tr>
 					<td>商品合計</td>
 					<td><%= @sum %>円</td>
 				</tr>
 				<tr>
+					<td>送料</td>
+					<td><%= @order.shipping_cost %>円</td>
+				</tr>
+				<tr>
 					<td>総計</td>
-					<td class="bold"><%= @order.grand_total %>円</td>
+					<td><%= @order.grand_total.to_s(:delimited) %>円</td>
 				</tr>
 			</tbody>
 		</table>

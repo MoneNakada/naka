@@ -1,6 +1,6 @@
 <%= form_with model: genre, url: url do |f| %>
-	<%= f.label :name, "ジャンル名:" %>
-	<%= f.text_field :name %>
+	<%= f.label :name, "ジャンル名" %>
+	<%= f.text_field :name, :placeholder =>"ジャンル名" %>
 
-	<%= f.submit submit, class: "btn btn-primary ml2" %>
+	<%= f.submit submit, class: "btn btn-success" %>
 <% end %>

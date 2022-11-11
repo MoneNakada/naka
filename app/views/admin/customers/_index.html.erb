@@ -1,22 +1,24 @@
-<table class="admin_customer_index has_border">
+<table class="mx-auto">
 	<thead>
-		<th>会員ID</th>
-		<th>名前</th>
-		<th>フリガナ</th>
-		<th>会員ステータス</th>
-		<th></th>
+		<tr class="bg-light">
+			<th>会員ID</th>
+			<th>氏名</th>
+			<th>メールアドレス</th>
+			<th>ステータス</th>
+			<th></th>
+		</tr>
 	</thead>
 	<tbody>
 		<% customers.each do |customer| %>
-			<tr>
+			<tr class="border">
 				<td><%= customer.id %></td>
-				<td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-				<td><%= customer.full_name_kana %></td>
+				<td><%= link_to customer.full_name, admin_customer_path(customer), class: "border-bottom text-dark" %></td>
+				<td><%= customer.email %></td>
 				<td>
 					<% if customer.is_active? %>
-						<span class="text-active">有効</span>	
+						<span class="text-success">有効</span>
 					<% else %>
-						<span class="text-invalid">退会済み</span>
+						<span class="text-dark">退会</span>
 					<% end %>
 				</td>
 			</tr>
