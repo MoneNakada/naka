@@ -1,6 +1,6 @@
 <table class="mx-auto">
 	<thead>
-		<tr class="bg-light">
+		<tr class="bg-light border-top">
 			<th>会員ID</th>
 			<th>氏名</th>
 			<th>メールアドレス</th>
@@ -10,7 +10,7 @@
 	</thead>
 	<tbody>
 		<% customers.each do |customer| %>
-			<tr class="border">
+			<tr class="border-top border-bottom">
 				<td><%= customer.id %></td>
 				<td><%= link_to customer.full_name, admin_customer_path(customer), class: "border-bottom text-dark" %></td>
 				<td><%= customer.email %></td>

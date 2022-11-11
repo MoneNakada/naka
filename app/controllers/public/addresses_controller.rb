@@ -3,7 +3,7 @@ class Public::AddressesController < ApplicationController
     @address = Address.new
     @addresses = Address.all
   end
-  
+
   def create
     @addresses = Address.all
     # @address = @addresses.new(address_params)
@@ -18,8 +18,18 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
   
+  def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      redirect_to addresses_path
+    else 
+      render :edit
+    end 
+  end
+
   private
   def address_params
     params.require(:address).permit(:postal_code, :destination, :name)

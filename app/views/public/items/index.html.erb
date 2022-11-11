@@ -1,19 +1,16 @@
 <section class="container">
-	<div class="content">
-		<h2 class="section-ttl">商品一覧</h2>
-
-		<div class="row justify-content-around">
-			<% @items.each do |item| %>
-				<%= link_to item_path(item) do %>
-					<% if item.image.attached? %>
-            <%= image_tag item.image, size: "300x300" %>
-          <% else %>
-            <%= image_tag 'no_image', size: "300x300" %>
-          <% end %>
-					<p class="text-dark"><%= item.name %></p>
-					<p class="text-dark">¥<%= item.with_tax_price %></p>
-				<% end %>
+	<h2 class="m-3">商品一覧(全<%= @items.count %>件)</h2>
+	<div class="row justify-content-around">
+		<% @items.each do |item| %>
+			<%= link_to item_path(item) do %>
+				<% if item.image.attached? %>
+          <%= image_tag item.image, size: "300x300" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+				<p class="text-dark"><%= item.name %></p>
+				<p class="text-dark">¥<%= item.with_tax_price %></p>
 			<% end %>
-		</div>
+		<% end %>
 	</div>
 </section>

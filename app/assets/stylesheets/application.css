@@ -13,10 +13,3 @@
  *= require_tree .
  *= require_self
  */
-.section-ttl {
-  font-size: 32px;
-  font-weight: bold;
-  text-align: center;
-  padding-top: 50px;
-  margin-bottom: 30px;
-}

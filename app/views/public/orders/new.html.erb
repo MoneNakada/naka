@@ -1,27 +1,27 @@
 <section class="container">
-	<h2 class="section-ttl bg-light">注文情報入力</h2>
+	<h2 class="bg-light m-3">注文情報入力</h2>
 
 	<%= form_with model: @order, url: orders_confirm_path do |f| %>
-		<div class="field mb2">
+		<div>
 			<h3>支払方法</h3>
-		  	<%= f.radio_button :payment_method, "credit_card" %>
+		  	<%= f.radio_button :payment_method, "credit_card", class: "ml-3" %>
 		  	<%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %><br>
-		  	<%= f.radio_button :payment_method, "transfer" %>
+		  	<%= f.radio_button :payment_method, "transfer", class: "ml-3" %>
 		  	<%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 	  	</div>
 		<h3>お届け先</h3>
-		<div class="field mb2 select_address_0">
-			<label class="fz16"><%= f.radio_button :select_address, 0, :checked => true %>ご自身の住所</label>
-			<p>〒<%= current_customer.postal_code %> <%= current_customer.address %></p>
-			<p><%= current_customer.full_name %></p>
+		<div>
+			<label class="ml-3"><%= f.radio_button :select_address, 0, :checked => true %>ご自身の住所</label>
+			<p class="ml-5">〒<%= current_customer.postal_code %> <%= current_customer.address %></p>
+			<p class="ml-5"><%= current_customer.full_name %></p>
 		</div>
-		<div class="field mb2 select_address_1">
-			<label class="fz16"><%= f.radio_button :select_address, 1 %>登録済住所から選択</label><br>
-			<%= f.select "address_id", options_from_collection_for_select(current_customer.addresses, :id, :finally_address) %>
+		<div>
+			<label class="ml-3"><%= f.radio_button :select_address, 1 %>登録済住所から選択</label>
+			<div class="ml-5"><%= f.select "address_id", options_from_collection_for_select(current_customer.addresses, :id, :finally_address) %></div>
 		</div>
-		<div class="field mb2 select_address_2">
-			<label class="fz16"><%= f.radio_button :select_address, 2 %>新しいお届け先</label>
-			<table class="customer_info customer_form">
+		<div>
+			<label class="ml-3"><%= f.radio_button :select_address, 2 %>新しいお届け先</label>
+			<table class="ml-5">
 	      <thead>
 	        <th></th>
 	        <th></th>
@@ -33,7 +33,7 @@
 	        </tr>
 	        <tr>
 	          <td><%= f.label :destination, "住所" %></td>
-	          <td><%= f.text_field :destination, placeholder: "東京都渋谷区代々木神園町0-0", class: "jpostal_address" %></td>
+	          <td><%= f.text_field :destination, placeholder: "東京都渋谷区代々木神園町0-0" %></td>
 	        </tr>
 	        <tr>
 	          <td><%= f.label :name, "宛名" %></td>

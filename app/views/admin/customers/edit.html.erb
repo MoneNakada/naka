@@ -1,7 +1,7 @@
 <section class="container">
-	<h2 class="bg-light"><%= @customer.first_name %> <%= @customer.last_name %> さんの会員情報編集</h2>
+	<h2 class="bg-light m-3"><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2>
 	<%= form_for(@customer, url: admin_customer_path(@customer)) do |f| %>
-		<table class="customer_info customer_form">
+		<table>
 			<thead>
 				<th></th>
 				<th></th>
@@ -24,28 +24,30 @@
 				</tr>
 				<tr>
 					<td>郵便番号</td>
-					<td colspan="2"><%= f.text_field :postal_code, :placeholder =>"#{@customer.postal_code}" %></td>
+					<td><%= f.text_field :postal_code, :placeholder =>"#{@customer.postal_code}" %></td>
 				</tr>
 				<tr>
 					<td>住所</td>
-					<td colspan="2" class="field_for_address"><%= f.text_field :address, :placeholder =>"#{@customer.address}" %></td>
+					<td><%= f.text_field :address, :placeholder =>"#{@customer.address}" %></td>
 				</tr>
 				<tr>
 					<td>電話番号</td>
-					<td colspan="2"><%= f.text_field :telephone_number, :placeholder =>"#{@customer.telephone_number}" %></td>
+					<td><%= f.text_field :telephone_number, :placeholder =>"#{@customer.telephone_number}" %></td>
 				</tr>
 				<tr>
 					<td>メールアドレス</td>
-					<td colspan="2"><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@customer.email}" %></td>
+					<td><%= f.email_field :email, autocomplete: "email", :placeholder =>"#{@customer.email}" %></td>
 				</tr>
 				<tr>
 					<td>会員ステータス</td>
-					<td><%= f.radio_button :is_active, true %><%= f.label :is_active, "有効", class: "text-active" %></td>
-					<td><%= f.radio_button :is_active, false %><%= f.label :is_active, "退会", class: "text-invalid" %></td>
+					<td>
+					  <%= f.radio_button :is_active, true %><%= f.label :is_active, "有効" %>
+	          <%= f.radio_button :is_active, false %><%= f.label :is_active, "退会" %>
+	        </td>
 				</tr>
 				<tr>
 				  <td></td>
-					<td colspan="3"><%= f.submit "変更を保存", class: "btn btn-success" %></td>
+					<td><%= f.submit "変更を保存", class: "btn btn-success" %></td>
 				</tr>
 			</tbody>
 		</table>

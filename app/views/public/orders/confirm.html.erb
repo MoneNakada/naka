@@ -1,9 +1,9 @@
 <section class="container">
-	<h2 class="section-ttl bg-light">注文情報確認</h2>
+	<h2 class="m-3 bg-light">注文情報確認</h2>
 	<div class="row justify-content-around">
-		<table class="confirm_cart_items mr2 mb3 has_border">
+		<table>
 			<thead>
-				<tr class="bg-light ">
+				<tr class="bg-light">
 					<th colspan="2", class="border">商品名</th>
 					<th class="border">単価(税込)</th>
 					<th class="border">数量</th>
@@ -22,7 +22,7 @@
                 <%= image_tag 'no_image', size: "300x300" %>
               <% end %>
 						</td>
-						<td class="border"><%= item.name %></td>
+						<td><%= item.name %></td>
 						<td class="border"><%= item.with_tax_price %></td>
 						<td class="border"><%= cart_item.amount %></td>
 						<td class="border"><%= cart_item.subtotal %></td>
@@ -31,7 +31,7 @@
 				<% end %>
 			</tbody>
 		</table>
-		<table class="confirm_prices has_border">
+		<table>
 			<thead>
 				<tr>
 					<th></th>
@@ -40,15 +40,15 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td class="border">送料</td>
+					<td class="border bg-light">送料</td>
 					<td class="border">800</td>
 				</tr>
 				<tr>
-					<td class="border">商品合計</td>
+					<td class="border bg-light">商品合計</td>
 					<td class="border"><%= @sum %></td>
 				</tr>
 				<tr>
-					<td class="border">請求金額</td>
+					<td class="border bg-light">請求金額</td>
 					<td class="bold border"><%= 800 + @sum %></td>
 				</tr>
 			</tbody>
@@ -75,8 +75,8 @@
         </tr>
       </tbody>
     </table>
-		<div class="actions text-center">
-			<%= f.submit "注文を確定する", class: "btn btn-success submit_to_create_order" %>
+		<div class="text-center">
+			<%= f.submit "注文を確定する", class: "btn btn-success" %>
 		</div>
 	<% end %>
 </section>

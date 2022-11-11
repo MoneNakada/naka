@@ -1,7 +1,7 @@
 <section class="container">
-	<h2 class="section-ttl bg-light">配送先登録 / 一覧</h2>
+	<h2 class="m-3 bg-light">配送先登録 / 一覧</h2>
   <%= render 'form', address: @address, submit: '新規登録' %>
-	<table class="addresses mt2 has_border">
+	<table class="m-3">
 		<thead>
 			<tr class="bg-light">
 				<th class="border">郵便番号</th>
@@ -13,7 +13,7 @@
 		<tbody>
 			<% @addresses.each do |address| %>
 				<tr class="border">
-					<td class="text-center border"><%= address.postal_code %></td>
+					<td class="border"><%= address.postal_code %></td>
 					<td class="border"><%= address.destination %></td>
 					<td class="border"><%= address.name %></td>
 					<td class="text-center border">

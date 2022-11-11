@@ -1,7 +1,7 @@
 <section class="container">
-  <h2 class="bg-light">ログイン</h2>
+  <h2 class="bg-light m-3">ログイン</h2>
   
-  <h5 class="bg-light">会員の方はこちらからログイン</h2>
+  <h5 class="bg-light m-3">会員の方はこちらからログイン</h2>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <table class="customer_info customer_form mx-auto">
       <thead>
@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <td></td>
-          <td colspan="2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+          <td colspan="2"><%= f.submit "ログイン", class: "btn btn-primary m-3" %></td>
         </tr>
       </tbody>
     </table>

@@ -1,8 +1,8 @@
 <section class="container">
-  <h2 class="bg-light">管理者ログイン</h2>
+  <h2 class="m-3 bg-light">管理者ログイン</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <table class="customer_info customer_form mx-auto">
+    <table class="mx-auto">
       <thead>
         <th></th>
         <th></th>
@@ -14,11 +14,11 @@
         </tr>
         <tr>
           <td><%= f.label :password, "パスワード" %></td>
-          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          <td><%= f.password_field :password %></td>
         </tr>
         <tr>
           <td></td>
-          <td colspan="2"><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+          <td><%= f.submit "ログイン", class: "btn btn-primary m-3" %></td>
         </tr>
       </tbody>
     </table>

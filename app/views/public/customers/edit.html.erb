@@ -1,5 +1,5 @@
 <section class="container">
-	<h2 class="section-ttl  bg-light">会員情報編集</h2>
+	<h2 class="m-3 bg-light">会員情報編集</h2>
 	<%= form_with model: @customer, url: update_information_path do |f| %>
 
 		<table class="customer_info customer_form">
@@ -21,11 +21,11 @@
 				</tr>
 				<tr>
 					<td><%= f.label :postal_code, "郵便番号" %></td>
-					<td colspan="2"><%= f.text_field :postal_code, :placeholder =>"#{@customer.postal_code}", class: "jpostal_code" %></td>
+					<td colspan="2"><%= f.text_field :postal_code, :placeholder =>"#{@customer.postal_code}" %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :address, "住所" %></td>
-					<td colspan="2"><%= f.text_field :address, :placeholder =>"#{@customer.address}", class: "jpostal_address" %></td>
+					<td colspan="2"><%= f.text_field :address, :placeholder =>"#{@customer.address}" %></td>
 				</tr>
 				<tr>
 					<td><%= f.label :telephone_number, "電話番号" %></td>

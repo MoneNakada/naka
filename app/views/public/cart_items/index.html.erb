@@ -1,61 +1,60 @@
 <section class="container">
-	<h2 class="section-ttl bg-light">ショッピングカート</h2>
-
-		<div class="text-right mb2">
-			<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にします。よろしいでしょうか？", class: "btn btn-danger" %>
-		</div>
-		<table class="cart_items has_border mb3 mx-auto">
-			<thead>
-				<tr class="bg-light border">
-					<th colspan="2", class="border">商品名</th>
-					<th class="border">単価(税込)</th>
-					<th class="border">数量</th>
-					<th class="border">小計</th>
-					<th></th>
+	<div class="row justify-content-around m-3">
+		<h2 class="bg-light">ショッピングカート</h2>
+		<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, "data-confirm" => "カートを空にします。よろしいでしょうか？", class: "btn btn-danger" %>
+	</div>
+	<table class="cart_items has_border mb3 mx-auto">
+		<thead>
+			<tr class="bg-light border">
+				<th colspan="2", class="border">商品名</th>
+				<th class="border">単価(税込)</th>
+				<th class="border">数量</th>
+				<th class="border">小計</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		  <% @sum = 0 %>
+			<% @cart_items.each do |cart_item| %>
+				<% item = cart_item.item %>
+				<tr>
+					<td>
+						<% if item.image.attached? %>
+			            	<%= image_tag item.image, size: "300x300" %>
+			            <% else %>
+			                <%= image_tag 'no_image', size: "300x300" %>
+			            <% end %>
+					</td>
+					<td class="border"><%= link_to item.name, item_path(item), class: "text-dark" %></td>
+					<td class="border"><%= item.with_tax_price %></td>
+					<td class="border">
+						<%= form_with model:[cart_item] do |f| %>
+							<%= f.select :amount, [*(1..10)], id: "cart_item_amount_#{cart_item.id}" %>
+							<%= f.submit "変更", class: "btn btn-success", id: "submit_for_cart_item_#{cart_item.id}" %>
+						<% end %>
+					</td>
+					<td class="border"><%= cart_item.subtotal %></td>
+					<td class="text-center border">
+						<%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
+					</td>
 				</tr>
-			</thead>
-			<tbody>
-			  <% @sum = 0 %>
-				<% @cart_items.each do |cart_item| %>
-					<% item = cart_item.item %>
-					<tr>
-						<td>
-							<% if item.image.attached? %>
-				            	<%= image_tag item.image, size: "300x300" %>
-				            <% else %>
-				                <%= image_tag 'no_image', size: "300x300" %>
-				            <% end %>
-						</td>
-						<td class="border"><%= link_to item.name, item_path(item), class: "text-dark" %></td>
-						<td class="text-right border"><%= item.with_tax_price %></td>
-						<td class="border">
-							<%= form_with model:[cart_item] do |f| %>
-								<%= f.select :amount, [*(1..10)], id: "cart_item_amount_#{cart_item.id}" %>
-								<%= f.submit "変更", class: "btn btn-success", id: "submit_for_cart_item_#{cart_item.id}" %>
-							<% end %>
-						</td>
-						<td class="text-right border"><%= cart_item.subtotal %></td>
-						<td class="text-center border">
-							<%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
-						</td>
-					</tr>
-					<% @sum += cart_item.subtotal %>
-				<% end %>
-			</tbody>
-		</table>
-		
-		<div class="row justify-content-around">
-			<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
-			<div class="row">
-				<p class="text-right border">合計金額
-				<p class="text-right bold border"><%= @sum %>
-			</div>
-		</div>	
-		
-		<% if @cart_items.exists? %>
-		<div class="text-center">
-			<%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+				<% @sum += cart_item.subtotal %>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<div class="row justify-content-around m-3">
+		<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+		<div class="row">
+			<p class="text-right border">合計金額
+			<p class="text-right bold border"><%= @sum %>
 		</div>
-		<% else %>
-		<% end %>
+	</div>	
+	
+	<% if @cart_items.exists? %>
+	<div class="text-center">
+		<%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+	</div>
+	<% else %>
+	<% end %>
 </section>

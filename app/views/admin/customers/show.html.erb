@@ -1,6 +1,6 @@
 <section class="container">
-	<h2 class="bg-light"><%= @customer.full_name %>さんの会員詳細</h2>
-	<table>
+	<h2 class="bg-light m-3"><%= @customer.full_name %>さんの会員詳細</h2>
+	<table class="m-3">
 		<thead>
 			<th></th>
 			<th></th>
@@ -9,7 +9,7 @@
 		<tbody>
 			<tr>
 				<td>会員ID</td>
-				<td colspan="2"><%= @customer.id %></td>
+				<td><%= @customer.id %></td>
 			</tr>
 			<tr>
 				<td>氏名</td>
@@ -23,23 +23,23 @@
 			</tr>
 			<tr>
 				<td>郵便番号</td>
-				<td colspan="2"><%= @customer.postal_code %></td>
+				<td><%= @customer.postal_code %></td>
 			</tr>
 			<tr>
 				<td>住所</td>
-				<td colspan="2"><%= @customer.address %></td>
+				<td><%= @customer.address %></td>
 			</tr>
 			<tr>
 				<td>電話番号</td>
-				<td colspan="2"><%= @customer.telephone_number %></td>
+				<td><%= @customer.telephone_number %></td>
 			</tr>
 			<tr>
 				<td>メールアドレス</td>
-				<td colspan="2"><%= @customer.email %></td>
+				<td><%= @customer.email %></td>
 			</tr>
 			<tr>
 				<td>会員ステータス</td>
-				<td colspan="2">
+				<td>
 					<% if @customer.is_active? %>
 						<span class="text-success">有効	</span>					
 					<% else %>
@@ -48,6 +48,7 @@
 				</td>
 			</tr>
 			<tr>
+				<td></td>
 				<td><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %></td>
 				<td><%= link_to "注文履歴一覧を見る", admin_top_path, class: "btn btn-primary" %></td>
 			</tr>

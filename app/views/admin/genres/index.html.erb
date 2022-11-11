@@ -1,18 +1,18 @@
 <section class="container">
-	<h2 class="bg-light">ジャンル一覧・追加</h2>
+	<h2 class="bg-light m-3">ジャンル一覧・追加</h2>
 
-  <%= render 'form', genre: @genre, url: admin_genres_path, submit: '登録' %>
+  <%= render 'form', genre: @genre, url: admin_genres_path, submit: '新規登録' %>
 
-	<table>
+	<table class="mt-3">
 		<thead>
-			<tr class="border bg-light">
+			<tr class="border-top bg-light">
 				<th>ジャンル</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @genres.each do |genre| %>
-				<tr class="border">
+				<tr class="border-top border-bottom">
 					<td><%= genre.name %></td>
 
 					<td><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn btn-success" %></td>

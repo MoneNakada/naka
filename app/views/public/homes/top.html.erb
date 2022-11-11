@@ -1,6 +1,6 @@
 <section class="container">
-	<div class="content">
-		<div class="mv">
+	<div>
+		<div>
 			<p class="border text-center">
 				ようこそ、NaganoCakeへ!<br>
 				このサイトは、ケーキ販売のECサイトになります。<br>
@@ -8,7 +8,7 @@
 				購入には会員登録が必要になります。
 			</p>
 		</div>
-		<h2 class="section-ttl">新着商品</h2>
+		<h2>新着商品</h2>
 		<div class="row justify-content-around">
 			<% @items.each do |item| %>
 				<%= link_to item_path(item) do %>

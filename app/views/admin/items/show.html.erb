@@ -1,16 +1,14 @@
 <section class="container">
-	<h2 class="bg-light">商品詳細</h2>
+	<h2 class="bg-light m-3">商品詳細</h2>
 	<div class="row justify-content-around">
 		<div>
-			<div class="image_field">
-				<% if @item.image.attached? %>
-          <%= image_tag @item.image, size: "300x300" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "300x300" %>
-        <% end %>
-			</div>
+			<% if @item.image.attached? %>
+	          <%= image_tag @item.image, size: "300x300" %>
+	        <% else %>
+	          <%= image_tag 'no_image', size: "300x300" %>
+	        <% end %>
 		</div>
-		<table class="admin_item_info">
+		<table>
 			<thead>
 				<tr>
 					<th></th>
