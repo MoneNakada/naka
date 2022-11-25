@@ -1,18 +1,18 @@
 <section class="container">
 	<div class="row">
 		<div class="col-md-3 border">
-			<h3 class="m-3 border">ジャンル検索</h3>
+			<h6 class="m-3 border">ジャンル検索</h3>
 			<% @genres.each do |genre| %>
-				<%= link_to genre.name, items_path(genre_id: genre.id) %><br>
+				<%= link_to genre.name, items_path(genre_id: genre.id), class: "text-dark" %><br>
 			<% end %>
 		</div>
 		<div class="col-md-8">
       <% if params[:genre_id] %>
-        <h2>
+        <h2 class="m-3">
           <%= @genre.name %>一覧(全<%= @all_items_count %>件)
         </h2>
       <% else %>
-        <h2>
+        <h2 class="m-3">
           商品一覧(全<%= @all_items_count %>件)
         </h2>
       <% end %>
