@@ -24,6 +24,13 @@ class Public::CartItemsController < ApplicationController
     end
   end
   
+  def update
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.amount = cart_item_params[:amount].to_i
+    @cart_item.update(amount: @cart_item.amount)
+    redirect_to cart_items_path
+  end  
+  
   def destroy
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy

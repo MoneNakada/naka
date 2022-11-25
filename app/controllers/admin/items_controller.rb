@@ -10,7 +10,7 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -23,16 +23,24 @@ class Admin::ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
   end
-  
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path(@item)
     else
       render :edit
-    end 
+    end
   end
-  
+
+  def search
+    if params[:name].present?
+      @items = Item.where('name like ?', "%#{params[:name]}%")
+    else
+      @items = Item.all
+    end
+  end
+
   private
 
   def item_params

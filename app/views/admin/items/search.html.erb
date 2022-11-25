@@ -1,0 +1,11 @@
+<section class="container">
+	<div class="row justify-content-around">
+		<h2 class="bg-light m-3">商品一覧</h2>
+
+		<h3 class="text-right m-3">
+			<%= link_to "+", new_admin_item_path, class: "text-dark btn shadow rounded-circle p-0", style: "width:2rem;height:2rem;" %>
+		</h3>
+	</div>	
+	<%= render 'admin/items/index', items: @items %>
+
+</section>
