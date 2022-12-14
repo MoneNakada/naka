@@ -6,11 +6,9 @@
 	    	<%= image_tag 'no_image', size: "300x300" %>
 	    <% end %>
 		<div>
-		    <h2 class="section-ttl"><%= @item.name %></h2>
-			<h4><%= @item.introduction %></h4>
-			<p>
-				¥<%= @item.with_tax_price %>(税込)
-			</p><br>
+		  <h2><%= @item.name %></h2>
+			<h4><%= @item.introduction %></h4><br>
+			<h2>¥<%= @item.with_tax_price %>(税込)</h2><br>
 				
 			<%= form_with model: @cart_item, url: cart_items_path do |f| %>
 				<%= f.select :amount, *[1..10] %>

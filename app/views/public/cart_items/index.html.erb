@@ -17,15 +17,15 @@
 		  <% @sum = 0 %>
 			<% @cart_items.each do |cart_item| %>
 				<% item = cart_item.item %>
-				<tr>
+				<tr class="border">
 					<td>
 						<% if item.image.attached? %>
-			            	<%= image_tag item.image, size: "300x300" %>
-			            <% else %>
-			                <%= image_tag 'no_image', size: "300x300" %>
-			            <% end %>
+            	<%= image_tag item.image, size: "100x100" %>
+            <% else %>
+                <%= image_tag 'no_image', size: "100x100" %>
+            <% end %>
 					</td>
-					<td class="border"><%= link_to item.name, item_path(item), class: "text-dark" %></td>
+					<td><%= link_to item.name, item_path(item), class: "text-dark" %></td>
 					<td class="border"><%= item.with_tax_price %></td>
 					<td class="border">
 						<%= form_with model:[cart_item] do |f| %>
@@ -34,7 +34,7 @@
 						<% end %>
 					</td>
 					<td class="border"><%= cart_item.subtotal %></td>
-					<td class="text-center border">
+					<td class="text-center">
 						<%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
 					</td>
 				</tr>
@@ -46,7 +46,7 @@
 	<div class="row justify-content-around m-3">
 		<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
 		<div class="row">
-			<p class="text-right border">合計金額
+			<p class="text-right border bg-light">合計金額
 			<p class="text-right bold border"><%= @sum %>
 		</div>
 	</div>	

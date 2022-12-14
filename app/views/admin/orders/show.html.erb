@@ -1,5 +1,5 @@
 <section class="container">
-	<h2 class="bg-light m-3">注文履歴詳細</h2>
+	<h2 class="bg-light m-3 d-inline-block">注文履歴詳細</h2>
 	<table>
 		<thead>
 			<tr>
@@ -10,7 +10,7 @@
 		<tbody>
 			<tr>
 				<td>購入者</td>
-				<td class="border-bottom"><%= link_to @customer.full_name, admin_customer_path(@customer), class: "text-dark" %></td>
+				<td class="d-inline-block border-bottom"><%= link_to @customer.full_name, admin_customer_path(@customer), class: "text-dark" %></td>
 			</tr>
 			<tr>
 				<td>注文日</td>
@@ -58,7 +58,7 @@
 						<td><%= link_to item.name, admin_item_path(item), class: "text-dark" %></td>
 						<td class="text-center"><%= order_detail.price %></td>
 						<td class="text-center"><%= order_detail.amount %></td>
-						<td class="text-center"><%= order_detail.subtotal %></td>
+						<td class="text-center"><%= order_detail.subtotal.to_s(:delimited) %></td>
 						<td>
 							<%= form_with model: order_detail, url: admin_order_order_detail_path(order_id: @order.id, id: order_detail.id) do |f| %>
 								<%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
@@ -81,7 +81,7 @@
 			<tbody>
 				<tr>
 					<td>商品合計</td>
-					<td><%= @sum %>円</td>
+					<td><%= @sum.to_s(:delimited) %>円</td>
 				</tr>
 				<tr>
 					<td>送料</td>

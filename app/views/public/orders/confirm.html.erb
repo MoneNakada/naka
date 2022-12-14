@@ -1,5 +1,5 @@
 <section class="container">
-	<h2 class="m-3 bg-light">注文情報確認</h2>
+	<h2 class="m-3 bg-light d-inline-block">注文情報確認</h2>
 	<div class="row justify-content-around">
 		<table>
 			<thead>
@@ -14,12 +14,12 @@
 			  <% @sum = 0 %>
 				<% @cart_items.each do |cart_item| %>
 					<% item = cart_item.item %>
-					<tr>
+					<tr class="border">
 						<td>
 							<% if item.image.attached? %>
-                <%= image_tag item.image, size: "300x300" %>
+                <%= image_tag item.image, size: "100x100" %>
               <% else %>
-                <%= image_tag 'no_image', size: "300x300" %>
+                <%= image_tag 'no_image', size: "100x100" %>
               <% end %>
 						</td>
 						<td><%= item.name %></td>

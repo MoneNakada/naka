@@ -1,9 +1,9 @@
 <section class="container">
 	<div class="row">
-		<div class="col-md-3 border">
-			<h6 class="m-3 border">ジャンル検索</h3>
-			<% @genres.each do |genre| %>
-				<%= link_to genre.name, items_path(genre_id: genre.id), class: "text-dark" %><br>
+		<div class="col-md-3 border m-3 text-center">
+			<h4 class="m-3 border d-inline-block">ジャンル検索</h3>
+			<% @genres.each do |genre| %><br>
+				<%= link_to genre.name, items_path(genre_id: genre.id), class: "text-dark" %>
 			<% end %>
 		</div>
 		<div class="col-md-8">

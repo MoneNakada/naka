@@ -1,5 +1,5 @@
 <section class="container">
-	<h2 class="m-3 bg-light">注文履歴詳細</h2>
+	<h2 class="m-3 bg-light d-inline-block">注文履歴詳細</h2>
 
 	<table>
 		<thead>
@@ -33,7 +33,7 @@
 	</table>
 
 	<table class="order_details mr2 has_border">
-		<p class="fz18 text-left mt-3">注文内容</p>
+		<h6 class="text-left mt-3 font-weight-bold">注文内容</h6>
 		<thead>
 			<tr class="bg-light">
 				<th class="border">商品</th>
@@ -67,7 +67,7 @@
 		<tbody>
 			<tr>
 				<td class="bg-light border">商品合計</td>
-				<td class="border"><%= @sum %></td>
+				<td class="border"><%= @sum.to_s(:delimited) %></td>
 			</tr>
 			<tr>
 				<td class="bg-light border">配送料</td>
@@ -75,7 +75,7 @@
 			</tr>
 			<tr>
 				<td class="bg-light border">ご請求額</td>
-				<td class="bold border"><%= @order.grand_total %></td>
+				<td class="bold border"><%= @order.grand_total.to_s(:delimited) %></td>
 			</tr>
 		</tbody>
 	</table>
