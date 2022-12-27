@@ -50,7 +50,7 @@
 					<td class="border"><%= link_to item.name, item_path(item), class: "text-dark" %></td>
 					<td class="border"><%= order_detail.price %></td>
 					<td class="border"><%= order_detail.amount %></td>
-					<td class="border"><%= order_detail.subtotal %></td>
+					<td class="border"><%= order_detail.subtotal.to_s(:delimited) %></td>
 				</tr>
 				<% @sum += order_detail.subtotal %>
 			<% end %>

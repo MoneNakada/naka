@@ -46,8 +46,9 @@
 	<div class="row justify-content-around m-3">
 		<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
 		<div class="row">
-			<p class="text-right border bg-light">合計金額
-			<p class="text-right bold border"><%= @sum %>
+			<p class="text-right border bg-light">合計金額</p>
+			<p class="text-right bold border"><%= @sum.to_s(:delimited) %></p>
+			<p class="text-right bold border"><%= @total.to_s(:delimited) %></p>
 		</div>
 	</div>	
 	
