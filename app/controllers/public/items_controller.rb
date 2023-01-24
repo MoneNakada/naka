@@ -7,7 +7,8 @@ class Public::ItemsController < ApplicationController
     else
       all_items = Item.all
     end
-    @items = all_items.all
+    # @items = all_items.all
+    @items = all_items.page(params[:page]).per(8)
     @all_items_count = all_items.count
   end
 
