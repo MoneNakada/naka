@@ -16,4 +16,12 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
+  
+  def search
+    if params[:name].present?
+      @items = Item.where('name like ?', "%#{params[:name]}%")
+    else
+      @items = Item.all
+    end
+  end
 end

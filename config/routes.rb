@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   
   scope module: :public do
     root 'homes#top'
+    get 'search' => 'items#search', as: 'search'
     get '/about' => 'homes#about', as: 'about'
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。

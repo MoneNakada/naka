@@ -1,0 +1,20 @@
+<section class="container">
+	<div>
+    <h2 class="m-3">
+      商品一覧
+    </h2>
+		<div class="row justify-content-around">
+			<% @items.each do |item| %>
+				<%= link_to item_path(item) do %>
+					<% if item.image.attached? %>
+	          <%= image_tag item.image, size: "170x170" %>
+	        <% else %>
+	          <%= image_tag 'no_image', size: "170x170" %>
+	        <% end %>
+					<p class="text-dark"><%= item.name %></p>
+					<p class="text-dark">¥<%= item.with_tax_price %></p>
+				<% end %>
+			<% end %>
+		</div>
+	</div>	
+</section>
