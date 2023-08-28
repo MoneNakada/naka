@@ -15,6 +15,11 @@ Genre.create!(
    is_active: true
 )
 
+Genre.create!(
+   name: 'プリン',
+   is_active: true
+)
+
 item = Item.create!(
    genre_id: 1,
    name: 'ショートケーキ',
@@ -23,6 +28,24 @@ item = Item.create!(
    is_active: true
 )
 item.image.attach(io: File.open(Rails.root.join('app/assets/images/cake1.jpg')), filename: 'cake1.jpg')
+
+item2 = Item.create!(
+   genre_id: 1,
+   name: 'モンブラン',
+   introduction: '2番目の商品です。',
+   price: 600,
+   is_active: false
+)
+item2.image.attach(io: File.open(Rails.root.join('app/assets/images/cake2.jpg')), filename: 'cake2.jpg')
+
+item3 = Item.create!(
+   genre_id: 2,
+   name: '定番プリン',
+   introduction: '3番目の商品です。',
+   price: 400,
+   is_active: true
+)
+item3.image.attach(io: File.open(Rails.root.join('app/assets/images/cake3.jpg')), filename: 'cake3.jpg')
 
 Customer.create!(
    first_name: "難波",

@@ -1,11 +1,11 @@
 class Public::ItemsController < ApplicationController
   def index
-    @genres = Genre.all
+    @genres = Genre.where(is_active: 'true')
     if params[:genre_id]
       @genre = @genres.find(params[:genre_id])
-      all_items = @genre.items
+      all_items = @genre.items.where(is_active: 'true')
     else
-      all_items = Item.all
+      all_items = Item.where(is_active: 'true')
     end
     # @items = all_items.all
     @items = all_items.page(params[:page]).per(8)
@@ -16,7 +16,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
-  
+
   def search
     if params[:name].present?
       @items = Item.where('name like ?', "%#{params[:name]}%")
